@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="title">
+        <h1>Product Management</h1>
+    </div>
+
+    <form [formGroup]="productForm" class="mt-4">
+        <div class="justify-content-center align-items-baseline">
+            <div>
+                <label>Product Name: </label>
+                <input type="text" name="name" class="form-control" formControlName="name" required>
+                <div class="text-danger">
+                    @if(productForm.controls['name'].touched){
+                    @if (productForm.controls['name'].errors?.['required']) {
+                    <span>Name is required</span>
+                    }
+                    }
+                </div>
+            </div>
+            <div>
+                <label>Category: </label>
+                <input type="text" name="category" class="form-control" formControlName="category" required>
+                <div class="text-danger">
+                    @if(productForm.controls['category'].touched){
+                    @if (productForm.controls['category'].errors?.['required']) {
+                    <span>Category is required</span>
+                    }
+                    }
+                </div>
+            </div>
+            <div>
+                <label>Price: </label>
+                <input type="number" name="price" class="form-control" formControlName="price" required>
+                <div class="text-danger">
+                    @if(productForm.controls['price'].touched){
+                    @if (productForm.controls['price'].errors?.['required']) {
+                    <span>Price is required</span>
+                    }
+                    }
+                </div>
+            </div>
+            @if(productForm.controls['id'].value == '1'){
+            <button type="submit" class="btn btn-primary" name="submit" [disabled]="productForm.invalid"
+                (click)="onClick()">Add Product</button>
+            } @else {
+            <button type="submit" class="btn btn-warning" name="submit" [disabled]="productForm.invalid"
+                (click)="onUpdate()">Update Product</button>
+            }
+        </div>
+    </form>
+    <hr>
+
+    <div class="text-center">
+        <h3>Product List</h3>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="row align-items-center my-3">
+
+        <div class="col-md-4 col-4 my-2">
+            <input type="text" class="form-control" placeholder="Search by name" [(ngModel)]="searchTerm" />
+        </div>
+
+        <div class="col-md-4 col-4 my-2">
+            <select class="form-control" [(ngModel)]="categoryFilter">
+                <option value="">All Categories</option>
+                <option *ngFor="let category of getUniqueCategories()" [value]="category">{{ category }}</option>
+            </select>
+        </div>
+
+        <div class="col-md-4 col-4 d-flex my-2 gap-2">
+            <input type="number" class="form-control" placeholder="Min Price" [(ngModel)]="minPrice" />
+            <input type="number" class="form-control" placeholder="Max Price" [(ngModel)]="maxPrice" />
+        </div>
+    </div>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of filteredProducts(); let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.price | currency }}</td>
+                <td class="text-center ">
+                    <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                    <button class="btn btn-danger mx-2" (click)="onDelete(item.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
