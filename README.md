@@ -1,27 +1,54 @@
-# ProductManagement
+# Product Management System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+This is a simple Product Management System built with Angular that supports CRUD (Create, Read, Update, Delete) operations with basic filtering functionalities. The project allows users to add, edit, delete, and filter products by name, category, and price range.
 
-## Development server
+## Features
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Add new products with name, category, and price fields
+- Edit and update existing products
+- Delete products
+- Search and filter products by:
+  - Name (text search)
+  - Category (dropdown filter with unique categories)
+  - Price range (minimum and maximum)
 
-## Code scaffolding
+## Prerequisites
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Before running this project, make sure you have the following installed:
 
-## Build
+- [Node.js and npm](https://nodejs.org/) (Node Package Manager)
+- [Angular CLI](https://angular.io/cli) globally installed
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Getting Started
 
-## Running unit tests
+### 1. Clone the repository
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Clone this repository to your local machine.
 
-## Running end-to-end tests
+git clone https://github.com/your-username/product-management-system.git
+cd product-management-system
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 2. Install Dependencies:
+Install the project dependencies by running:
 
-## Further help
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 3. Run the Development Server
+Start the Angular development server with the following command:
+
+ng serve
+
+By default, the project will run on http://localhost:4200/. Open this URL in your browser to view the application.
+
+### Technologies Used
+Angular 18
+TypeScript
+HTML & CSS
+LocalStorage for data persistence
+
+License
+This project is open-source and available under the MIT License.
+
+
+
+
